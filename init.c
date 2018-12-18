@@ -1,5 +1,4 @@
 #include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\Scripts\\DefaultPlayerLoadout.c"
-#include "$CurrentDir:\\mpmissions\\dayzOffline.chernarusplus\\Scripts\\cappsTimeLoop.c"
 
 void main()
 {
@@ -36,7 +35,6 @@ void main()
 	//sets the time correctly and marks the first run of the script!
 	int setStartHour = 10;   
 	int setStopHour = 16; 
-	cappsTimeLoop(setStartHour, setStopHour, true);
 }
 
 class CustomMission: MissionServer
@@ -63,85 +61,7 @@ class CustomMission: MissionServer
 	
 	override void StartingEquipSetup(PlayerBase player, bool clothesChosen)
 	{
-/*
-		player.RemoveAllItems();
-
-		EntityAI item = player.GetInventory().CreateInInventory(topsMissionArray.GetRandomElement());
-		EntityAI item2 = player.GetInventory().CreateInInventory(pantsArray.GetRandomElement());
-		EntityAI item3 = player.GetInventory().CreateInInventory(shoesArray.GetRandomElement());
-*/
-	// 	EntityAI itemTop;
-	// 	EntityAI itemEnt;
-	// 	ItemBase itemBs;
-	// 	float rand;
-		
-	// 	itemTop = player.FindAttachmentBySlotName("Body");
-		
-	// 	if ( itemTop )
-	// 	{
-	// 		itemEnt = itemTop.GetInventory().CreateInInventory("Rag");
-	// 		if ( Class.CastTo(itemBs, itemEnt ) )
-	// 	itemBs.SetQuantity(4);
-
-	// 		SetRandomHealth(itemEnt);
-			
-	// 		itemEnt = itemTop.GetInventory().CreateInInventory("RoadFlare");
-	// 		SetRandomHealth(itemEnt);
-		
-	// 		itemEnt = itemTop.GetInventory().CreateInInventory("StoneKnife");
-	// 		SetRandomHealth(itemEnt);
-	// 	}
-
-	// 	rand = Math.RandomFloatInclusive(0.0, 1.0);
-	// 	if ( rand < 0.25 )
-	// 		itemEnt = player.GetInventory().CreateInInventory("SodaCan_Cola");
-	// 	else if ( rand > 0.75 )
-	// 		itemEnt = player.GetInventory().CreateInInventory("SodaCan_Spite");
-	// 	else
-	// 		itemEnt = player.GetInventory().CreateInInventory("SodaCan_Pipsi");
-		
-	// 	SetRandomHealth(itemEnt);
-
-	// 	rand = Math.RandomFloatInclusive(0.0, 1.0);
-	// 	if ( rand < 0.35 )
-	// 		itemEnt = player.GetInventory().CreateInInventory("Apple");
-	// 	else if ( rand > 0.65 )
-	// 		itemEnt = player.GetInventory().CreateInInventory("Pear");
-	// 	else
-	// 		itemEnt = player.GetInventory().CreateInInventory("Plum");
-		
-	// 	SetRandomHealth(itemEnt);
-	// }
 		DefaultPlayerLoadout dplObj = new DefaultPlayerLoadout(player);
-	}
-
-	override void TickScheduler (float timeSplice) {
-		GetGame().GetWorld().GetPlayerList(m_Players);
-		if( m_Players.Count() == 0 ) return;
-		for(int i = 0; i < SCHEDULER_PLAYERS_PER_TICK; i++)
-		{
-	     if(m_currentPlayer >= m_Players.Count() )
-	     {
-	        m_currentPlayer = 0;
-	     }
-	     PlayerBase currentPlayer = PlayerBase.Cast(m_Players.Get(m_currentPlayer));
-	     currentPlayer.OnTick();
-	     m_currentPlayer++;
-
-
-	   }
-		//Ignore above code that is required to keep food,drink and other survival elements working
-
-		int currentTime = GetGame().GetTime() * 0.001;
-		static int newTime = 0;
-		int timeDelay = 180;
-		if (currentTime >= newTime + timeDelay)
-		{
-			//GetGame().ChatPlayer(1,"3 minute check on reset!");//for debug pruposes
-			cappsTimeLoop(setStartHour,setStopHour,false);
-			//GetGame().ChatPlayer(1,"Passed the time switch call");//for debug pruposes
-			newTime = currentTime;
-		}
 	}
 
 };
