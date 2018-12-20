@@ -84,6 +84,7 @@ class DefaultPlayerLoadout {
 		car.GetInventory().CreateAttachment("SparkPlug");
 		car.GetInventory().CreateAttachment("EngineBelt");
 		car.GetInventory().CreateAttachment("CarBattery");
+		car.GetInventory().CreateAttachment("CarRadiator");
 		auto carfluids = Car.Cast(car);
 		carfluids.Fill(CarFluid.FUEL, 1000);
 		carfluids.Fill(CarFluid.OIL, 1000);
